@@ -29,7 +29,7 @@ parser.set_defaults(prefilter=True, postfilter=True)
 
 args = parser.parse_args([
     "--data_path=./out_flow/", 
-    "--input_fname=./data_input/flow-20.p", 
+    "--input_fname=./data_input/flow.p", 
     "--population=./data_input/pop.csv", 
     "--T=240", "--dt=240", 
     "--no_prefilter", "--no_postfilter", "--theta_freq=1",

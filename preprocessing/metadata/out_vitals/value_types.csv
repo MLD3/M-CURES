@@ -1,0 +1,7 @@
+"variable_name","value_type"
+"respiratoryrate","Numeric"
+"heartrate","Numeric"
+"temperature","Numeric"
+"sbp","Numeric"
+"dbp","Numeric"
+"spo2","Numeric"
