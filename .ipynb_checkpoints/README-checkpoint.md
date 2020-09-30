@@ -1,5 +1,0 @@
-# M-CURES
-
-## Preprocessing
-
-## Modelling
