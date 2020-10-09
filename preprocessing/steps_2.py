@@ -271,7 +271,7 @@ def transform_time_series_table(df_in, args):
     D_ = len(list(D_timeseries.values())[0].columns)
     
     ########
-    joblib.dump(D_timeseries, args.data_path + 'D_timeseries,{}.joblib'.format(datetime.now().isoformat()))
+#     joblib.dump(D_timeseries, args.data_path + 'D_timeseries,{}.joblib'.format(datetime.now().isoformat()))
     ########
     
 #     # (N*L)xD^ table

@@ -1,3 +1,3 @@
 hosp_id,"age_value_(17.999, 47.0]","age_value_(47.0, 59.0]","age_value_(59.0, 67.0]","age_value_(67.0, 76.0]","age_value_(76.0, 102.0]",race_value_African American,race_value_American Indian or Alaska Native,race_value_Asian,race_value_Caucasian,race_value_Native Hawaiian and Other Pacific Islander,race_value_Other,race_value_Patient Refused,race_value_Unknown,sex_value_F,sex_value_M
 90000,0,1,0,0,0,1,0,0,0,0,0,0,0,0,1
-90001,0,0,0,0,0,0,0,0,1,0,0,0,0,1,0
+90001,1,0,0,0,0,0,0,0,1,0,0,0,0,1,0

@@ -28,14 +28,14 @@ parser.add_argument('--no_postfilter',   dest='postfilter', action='store_false'
 parser.set_defaults(prefilter=True, postfilter=True)
 
 args = parser.parse_args([
-    "--data_path=./out_meds/", 
-    "--input_fname=./data_input/meds.p", 
-    "--population=./data_input/pop.csv", 
+    "--data_path=./sample_output/out_labs/", 
+    "--input_fname=./sample_input/labs.csv", 
+    "--population=./sample_input/pop.csv", 
     "--T=240", "--dt=240", 
     "--no_prefilter", "--no_postfilter", "--theta_freq=1",
     "--stats_functions", 'min', 'max', 'mean',
 ])
-args.variables = sorted(pd.read_csv('/data/covid/process_data/NEW-meds-2015-2019/out_meds/value_types.csv')['variable_name'])
+args.variables = sorted(pd.read_csv('metadata/out_labs/value_types.csv')['variable_name'])
 args.variables_num_freq = []
 
 #########
@@ -116,10 +116,10 @@ print('Done reindexing', flush=True)
 print('Time elapsed: %f seconds' % (time.time() - start_time), flush=True)
 
 ##############
-# joblib.dump(df_time_invariant_, args.data_path + 'df_time_series,{}.joblib'.format(datetime.now().isoformat()))
+# joblib.dump(df_time_invariant, args.data_path + 'df_time_series,{}.joblib'.format(datetime.now().isoformat()))
 # joblib.dump(dtypes_time_series, args.data_path + 'dtypes_time_series,{}.joblib'.format(datetime.now().isoformat()))
 # joblib.dump(df_time_series, args.data_path + 'df_time_series,{}.joblib'.format(datetime.now().isoformat()))
 ##############
 
 sdf = df_time_invariant.astype('Sparse[object]')
-joblib.dump(sdf, 'out_meds/sdf.joblib')
+joblib.dump(sdf, args.data_path + 'sdf.joblib')

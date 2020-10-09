@@ -28,14 +28,14 @@ parser.add_argument('--no_postfilter',   dest='postfilter', action='store_false'
 parser.set_defaults(prefilter=True, postfilter=True)
 
 args = parser.parse_args([
-    "--data_path=./out_flow/", 
-    "--input_fname=./data_input/flow.p", 
-    "--population=./data_input/pop.csv", 
+    "--data_path=./sample_output/out_meds/", 
+    "--input_fname=./sample_input/meds.csv", 
+    "--population=./sample_input/pop.csv", 
     "--T=240", "--dt=240", 
     "--no_prefilter", "--no_postfilter", "--theta_freq=1",
     "--stats_functions", 'min', 'max', 'mean',
 ])
-args.variables = sorted(pd.read_csv('/data/covid/process_data/NEW-flow/out_flow/value_types.csv')['variable_name'])
+args.variables = sorted(pd.read_csv('metadata/out_meds/value_types.csv')['variable_name'])
 args.variables_num_freq = []
 
 #########
@@ -91,22 +91,8 @@ print('N = {}'.format(N))
 print('L = {}'.format(L))
 print('', flush=True)
 
-# #######
-# df_time_series = df_data
-
-# print_header('2-B) Transform time-dependent data', char='-')
-# dir_path = data_path + '/'
-# start_time = time.time()
-
-# ## Create NxLxD^ table
-# df_time_series, dtypes_time_series = transform_time_series_table(df_time_series, args)
-# print('Time elapsed: %f seconds' % (time.time() - start_time), flush=True)
-
-# ##############
-# joblib.dump(dtypes_time_series, args.data_path + 'dtypes_time_series,{}.joblib'.format(datetime.now().isoformat()))
-# joblib.dump(df_time_series, args.data_path + 'df_time_series,{}.joblib'.format(datetime.now().isoformat()))
-# ##############
-
+#######
+df_time_series = df_data
 
 df_data = df_data[df_data['ID'].isin(df_population.index)]
 df_data = df_data.sort_values(by=['ID', 't'])
@@ -124,15 +110,16 @@ start_time = time.time()
 df_time_invariant = df_data_time_invariant.set_index(['ID', 'variable_name']).unstack()
 print('Done unstacking', flush=True)
 df_time_invariant.columns = df_time_invariant.columns.droplevel(0)
-df_time_invariant_ = df_time_invariant.reindex(columns=args.variables, fill_value=np.nan)
-df_time_invariant_ = df_time_invariant_.add_suffix('_value')
+df_time_invariant = df_time_invariant.reindex(columns=args.variables, fill_value=np.nan)
+df_time_invariant = df_time_invariant.add_suffix('_value')
 print('Done reindexing', flush=True)
 print('Time elapsed: %f seconds' % (time.time() - start_time), flush=True)
 
 ##############
-# joblib.dump(df_time_invariant_, args.data_path + 'df_time_series,18-19.joblib')
+# joblib.dump(df_time_invariant_, args.data_path + 'df_time_series,{}.joblib'.format(datetime.now().isoformat()))
+# joblib.dump(dtypes_time_series, args.data_path + 'dtypes_time_series,{}.joblib'.format(datetime.now().isoformat()))
+# joblib.dump(df_time_series, args.data_path + 'df_time_series,{}.joblib'.format(datetime.now().isoformat()))
 ##############
 
-sdf = df_time_invariant_.astype('Sparse[object]')
-joblib.dump(sdf, 'out_flow/sdf_time_series,20.joblib')
-print('Done! Time elapsed: %f seconds' % (time.time() - start_time), flush=True)
+sdf = df_time_invariant.astype('Sparse[object]')
+joblib.dump(sdf, args.data_path + 'sdf.joblib')
