@@ -30,7 +30,7 @@ parser.set_defaults(prefilter=True, postfilter=True)
 args = parser.parse_args([
     "--data_path=./sample_output/out_flow/", 
     "--input_fname=./sample_input/flow.csv", 
-    "--population=./sample_input/pop.csv", 
+    "--population=./sample_input/windows.csv", 
     "--T=240", "--dt=240", 
     "--no_prefilter", "--no_postfilter", "--theta_freq=1",
     "--stats_functions", 'min', 'max', 'mean',
