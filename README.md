@@ -2,9 +2,9 @@
 
 ## Usage
 - Refer to `requirements.txt` for the necessary pip packages. 
-- **Preprocessing**: Run `./run.sh`.
-- **Preprocessing_notebooks**: alternatively, run the notebooks in alphanumeric order. 
-- **Evaluation**: Run the `Eval.ipynb` notebook. 
+- **preprocessing**: Run `./run.sh`.
+- **preprocessing_notebooks**: alternatively, run the notebooks in alphanumeric order. 
+- **evaluation**: Run the `Eval.ipynb` notebook. 
 
 ## Input
 An example usage of the pipeline is provided with fake input data in `preprocessing/sample_input` and `evaluation/sample_cohort.csv`. The easiest way to use the code is to create local copies of `preprocessing` -> `preprocessing_UM` and `evaluation` -> `evaluation_UM` and replace the input files with real data. Please refer to the sample input files (and descriptions below) for formatting requirements. 
