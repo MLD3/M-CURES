@@ -2,7 +2,8 @@
 
 ## Usage
 - Refer to `requirements.txt` for the necessary pip packages. 
-- **Preprocessing**: Run the notebooks in alphanumeric order. 
+- **Preprocessing**: Run `./run.sh`.
+- **Preprocessing_notebooks**: alternatively, run the notebooks in alphanumeric order. 
 - **Evaluation**: Run the `Eval.ipynb` notebook. 
 
 ## Input
