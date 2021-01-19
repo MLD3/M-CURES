@@ -55,6 +55,7 @@ Below are the expected `variable_name`s in each file:
     - '_355444' for "Head of Bed Position"
 - `labs.csv`
     - pH (Ven Blood Gas): '81723_value' and '81723_hilonormal_flag'
-    - Hct (Art Blood Gas): '81799_value' and '81799_hilonormal_flag'
+    - pCO2 (Art Blood Gas): '84066_value' and '84066_hilonormal_flag'
+    - ~~Hct (Art Blood Gas): '81799_value' and '81799_hilonormal_flag'~~
 - `meds.csv`
     - currently none supported
