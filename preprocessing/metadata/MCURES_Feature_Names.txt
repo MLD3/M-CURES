@@ -56,18 +56,18 @@ spo2_value_(98.0, 100.0]
 81723_value_value_(7.36, 7.4]
 81723_value_value_(7.4, 7.43]
 81723_value_value_(7.43, 7.73]
-81799_hilonormal_flag_value_H
-81799_hilonormal_flag_value_L
-81799_hilonormal_flag_value_LL
-81799_hilonormal_flag_value_N
-81799_value_value_ <15
-81799_value_value_ SEE BELOW
-81799_value_value_ not available
-81799_value_value_(12.399000000000001, 23.0]
-81799_value_value_(23.0, 26.0]
-81799_value_value_(26.0, 30.0]
-81799_value_value_(30.0, 36.0]
-81799_value_value_(36.0, 59.0]
+84066_hilonormal_flag_value_H
+84066_hilonormal_flag_value_HH
+84066_hilonormal_flag_value_L
+84066_hilonormal_flag_value_LL
+84066_hilonormal_flag_value_N
+84066_value_value_ SEE BELOW
+84066_value_value_ SEE COMMENT
+84066_value_value_(10.999, 32.0]
+84066_value_value_(32.0, 36.0]
+84066_value_value_(36.0, 40.0]
+84066_value_value_(40.0, 45.0]
+84066_value_value_(45.0, 168.0]
 _307928_value_(-0.001, 2.0]
 _307928_value_(2.0, 3.0]
 _307928_value_(3.0, 5.0]
