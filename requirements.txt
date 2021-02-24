@@ -6,3 +6,4 @@ joblib==0.16.0
 pickle5==0.0.9
 scipy==1.4.1
 numpy==1.18.2
+pyyaml==5.3.1
