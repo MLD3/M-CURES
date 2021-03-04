@@ -52,44 +52,46 @@ def get_features(df, feature_sets):
     return X, np.array(feature_names)
 
 
-df_demog = pd.read_csv('sample_output/out_demog/static-features.csv').set_index('hosp_id')
-names_demog = list(df_demog.columns)
-print('demog - Loaded')
+if __name__ == '__main__':
 
-X_vitals = sparse.load_npz('sample_output/out_vitals/X_all.npz')
-IDs_vitals = load_IDs('sample_output/out_vitals/X_all.IDs.csv')
-names_vitals = json.load(open('metadata/vitals/X_all.feature_names.json', 'r'))
-print('vitals - Loaded')
+    df_demog = pd.read_csv('sample_output/out_demog/static-features.csv').set_index('hosp_id')
+    names_demog = list(df_demog.columns)
+    print('demog - Loaded')
 
-X_meds = sparse.load_npz('sample_output/out_meds/X_all.npz')
-IDs_meds = load_IDs('sample_output/out_meds/X_all.IDs.csv')
-names_meds = json.load(open('metadata/meds/X_all.feature_names.json', 'r'))
-print('meds - Loaded')
+    X_vitals = sparse.load_npz('sample_output/out_vitals/X_all.npz')
+    IDs_vitals = load_IDs('sample_output/out_vitals/X_all.IDs.csv')
+    names_vitals = json.load(open('metadata/vitals/X_all.feature_names.json', 'r'))
+    print('vitals - Loaded')
 
-X_labs = sparse.load_npz('sample_output/out_labs/X_all.npz')
-IDs_labs = load_IDs('sample_output/out_labs/X_all.IDs.csv')
-names_labs = json.load(open('metadata/labs/X_all.feature_names.json', 'r'))
-print('labs - Loaded')
+    X_meds = sparse.load_npz('sample_output/out_meds/X_all.npz')
+    IDs_meds = load_IDs('sample_output/out_meds/X_all.IDs.csv')
+    names_meds = json.load(open('metadata/meds/X_all.feature_names.json', 'r'))
+    print('meds - Loaded')
 
-X_flow = sparse.load_npz('sample_output/out_flow/X_all.npz')
-IDs_flow = load_IDs('sample_output/out_flow/X_all.IDs.csv')
-names_flow = json.load(open('metadata/flow/X_all.feature_names.json', 'r'))
-print('flow - Loaded')
+    X_labs = sparse.load_npz('sample_output/out_labs/X_all.npz')
+    IDs_labs = load_IDs('sample_output/out_labs/X_all.IDs.csv')
+    names_labs = json.load(open('metadata/labs/X_all.feature_names.json', 'r'))
+    print('labs - Loaded')
 
-df_cohort = pd.read_csv('sample_input/windows_map.csv')
-X, names = get_features(df_cohort, ['demog', 'vitals', 'meds', 'labs', 'flow'])
-df_features = pd.DataFrame(X.todense(), columns=names, index=df_cohort['ID'])
-pd.Series(names).rename('feature_name').to_csv('./sample_output/feature_names.csv', index=False)
+    X_flow = sparse.load_npz('sample_output/out_flow/X_all.npz')
+    IDs_flow = load_IDs('sample_output/out_flow/X_all.IDs.csv')
+    names_flow = json.load(open('metadata/flow/X_all.feature_names.json', 'r'))
+    print('flow - Loaded')
 
-## Full feature matrix
-joblib.dump(df_features, 'sample_output/full.joblib')
+    df_cohort = pd.read_csv('sample_input/windows_map.csv')
+    X, names = get_features(df_cohort, ['demog', 'vitals', 'meds', 'labs', 'flow'])
+    df_features = pd.DataFrame(X.todense(), columns=names, index=df_cohort['ID'])
+    pd.Series(names).rename('feature_name').to_csv('./sample_output/feature_names.csv', index=False)
 
-## Baseline features
-baseline_cols = pd.read_csv('metadata/Baseline_Feature_Names.txt', sep='\t', header=None)[0].values
-df_baseline = df_features[baseline_cols]
-df_baseline.to_csv('sample_output/baseline.csv')
+    ## Full feature matrix
+    joblib.dump(df_features, 'sample_output/full.joblib')
 
-## M-CURES (lite)
-mcures_cols = pd.read_csv('metadata/MCURES_Feature_Names.txt', sep='\t', header=None)[0].values
-df_mcures = df_features[mcures_cols]
-df_mcures.to_csv('sample_output/mcures.csv')
+    ## Baseline features
+    baseline_cols = pd.read_csv('metadata/Baseline_Feature_Names.txt', sep='\t', header=None)[0].values
+    df_baseline = df_features[baseline_cols]
+    df_baseline.to_csv('sample_output/baseline.csv')
+
+    ## M-CURES (lite)
+    mcures_cols = pd.read_csv('metadata/MCURES_Feature_Names.txt', sep='\t', header=None)[0].values
+    df_mcures = df_features[mcures_cols]
+    df_mcures.to_csv('sample_output/mcures.csv')
