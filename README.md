@@ -17,7 +17,7 @@ These will be streamlined and cleaned up in a future version.
     - window_id column is the index of 4h windows for the current encounter
     - ID column is "{hosp_id}-{window_id}"
 - `windows.csv` has the same content as the `ID` column in `windows_map.csv`
-- `sample_cohort.csv` is used by `Evaluation_UseCase1.ipynb`: predicting composite outcome that happens within the first 5 days. It has the same `ID` column as in `windows_map.csv`, and it contains an additional column `y` specifying the outcome label. The labels "y" for each window are defined as follows: 
+- `sample_cohort.csv` is used by `Evaluation_UseCase1.ipynb`: predicting composite outcome that happens within the first 5 days. It has the same `ID`, `hosp_id`, and `window_id` columns as in `windows_map.csv`, and it contains an additional column `y` specifying the outcome label. The labels "y" for each window are defined as follows: 
     - If a patient encounter experiences the outcome, then windows after the outcome window are not used for prediction and should not be included. Only windows before the outcome window are included and they have a label of 1. 
     - If a patient does not have an outcome then all of their windows have a label of 0, and we only include up to the first 30 windows (first 5 days). 
     
