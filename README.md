@@ -17,8 +17,13 @@ These will be streamlined and cleaned up in a future version.
     - window_id column is the index of 4h windows for the current encounter
     - ID column is "{hosp_id}-{window_id}"
 - `windows.csv` has the same content as the `ID` column in `windows_map.csv`
-- `sample_cohort.csv` is the same as `windows_map.csv`, except it contains an additional column `y` specifying the outcome label. 
-- `sample_cohort_outcome_past_2days.csv` is the same as `sample_cohort.csv`, except it only contains individuals who have the outcome after two days, and the `y` label specifies if the outcome occurs _ever_ (rather than within the first 5 days). 
+- `sample_cohort.csv` is used by `Evaluation_UseCase1.ipynb`: predicting composite outcome that happens within the first 5 days. It has the same `ID` column as in `windows_map.csv`, and it contains an additional column `y` specifying the outcome label. The labels "y" for each window are defined as follows: 
+    - If a patient encounter experiences the outcome, then windows after the outcome window are not used for prediction and should not be included. Only windows before the outcome window are included and they have a label of 1. 
+    - If a patient does not have an outcome then all of their windows have a label of 0, and we only include up to the first 30 windows (first 5 days). 
+    
+    Every encounter should have no more than 30 windows. 
+    
+- `sample_cohort_outcome_past_2days.csv` is used by `Evaluation_UseCase2.ipynb`: predicting composite outcome that happens after 48h using the first 48h data. It has the same format as `sample_cohort.csv`, except it only contains encounters who have the outcome after two days, and the `y` label specifies if the outcome occurs _ever_ (rather than within the first 5 days). Every encounter should have exactly 12 windows (48h worth of data). 
 
 
 ### Data
