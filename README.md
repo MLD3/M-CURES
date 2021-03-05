@@ -18,6 +18,7 @@ These will be streamlined and cleaned up in a future version.
     - ID column is "{hosp_id}-{window_id}"
 - `windows.csv` has the same content as the `ID` column in `windows_map.csv`
 - `sample_cohort.csv` is the same as `windows_map.csv`, except it contains an additional column `y` specifying the outcome label. 
+- `sample_cohort_outcome_past_2days.csv` is the same as `sample_cohort.csv`, except it only contains individuals who have the outcome after two days, and the `y` label specifies if the outcome occurs _ever_ (rather than within the first 5 days). 
 
 
 ### Data
