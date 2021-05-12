@@ -57,8 +57,21 @@ Below are the expected `variable_name`s in each file:
 - `flow.csv`: (note the underscore prefix)
     - '_307928' for "O2 flow rate"
     - '_313030' for "Pulse Oximetry type"
+        - "Intermittent"
+        - "Continuous"
     - '_314689' for "BP: Patient Position"
+        - "Lying"
+        - "Sitting"
+        - "Standing"
     - '_355444' for "Head of Bed Position"
+        - "HOB at 15 degrees"
+        - "HOB at 30 degrees"
+        - "HOB at 45 degrees"
+        - "HOB at 60 degrees"
+        - "HOB at 90 degrees"
+        - "HOB flat (medical condition)"
+        - "Reverse Trendelenberg"
+        - "other (see comments)"
 - `labs.csv`
     - pH (Ven Blood Gas): '81723_value' and '81723_hilonormal_flag'
     - pCO2 (Art Blood Gas): '84066_value' and '84066_hilonormal_flag'
