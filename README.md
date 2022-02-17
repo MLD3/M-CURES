@@ -21,7 +21,7 @@ If you use M-CURES in your research, please cite the following publication:
 ## Usage
 - Refer to `requirements.txt` for the necessary pip packages. 
 - **preprocessing**: Run `./run.sh`.
-- **evaluation**: Run the `Evaluation_Primary.ipynb` and `Evaluation_Secondary.ipynb` notebook. 
+- **evaluation**: Run the `Evaluation_Primary.ipynb` and `Evaluation_Secondary.ipynb` notebook to evaluate M-CURES. To save model predictions for a set of input data, run `calculate_score.py`.  
 
 ## Input
 An example usage of the pipeline is provided with dummy input data in `preprocessing/sample_input` and `evaluation/sample_cohort.csv`. The easiest way to use the code is to create local copies of `preprocessing` -> `preprocessing_UM` and `evaluation` -> `evaluation_UM` and replace the input files with real data. Please refer to the sample input files (and descriptions below) for formatting requirements. 
